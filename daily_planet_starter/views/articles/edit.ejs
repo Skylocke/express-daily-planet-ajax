@@ -13,7 +13,7 @@
     <textarea type="text" class="form-control" name="body"><%= article.body %></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Submit</button> <button class="btn btn-default" onclick="window.location.href='/articles/<%= article.id %>'">Cancel <i-glyphicon class="glyphicon glyphicon-arrow-left"></i></button> <button class="btn btn-default" onclick="window.location.href='/articles'">Back Home <i-glyphicon class="glyphicon glyphicon-home"></i></button>
 </form>
 
 <% include ../partials/footer.ejs %>
