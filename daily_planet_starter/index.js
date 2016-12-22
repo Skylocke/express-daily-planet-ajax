@@ -42,7 +42,30 @@ app.get('/about', function(req, res) {
   res.render('about');
 });
 
+// UPDATE
+app.get("/articles/:id/edit", function(req, res) {
+  console.log(req.params.id);
+  var article = articles[req.params.id]; // {title: 'Bernie! Bernie!', body: '#feelthebern'}
+  article.id = req.params.id; // {id:0, title: 'Bernie! Bernie!', body: '#feelthebern'}
+  res.render("articles/edit", {article: article});
+});
+
+app.put("/articles/:id", function(req, res) {
+  console.log("putting");
+  article[req.params.id] = req.body;
+
+  res.send(req.body);
+});
+
+// DELETE
+app.delete("/articles/:id", function(req, res) {
+  var articles_before_delete = articles;
+  articles_before_delete[req.params.id] = undefined;
+  articles = articles_before_delete;
+
+  res.send({message: 'success'});
+});
+
 app.listen(3000, function() {
   console.log("You're listening to the smooth sounds of port 3000 in the morning");
 });
-
