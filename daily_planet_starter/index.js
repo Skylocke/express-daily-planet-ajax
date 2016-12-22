@@ -13,6 +13,7 @@ var articles = [
 ];
 
 app.get('/', function(req, res) {
+  console.log(articles);
   res.render('index');
 });
 
@@ -44,7 +45,6 @@ app.get('/about', function(req, res) {
 
 // UPDATE
 app.get("/articles/:id/edit", function(req, res) {
-  console.log(req.params.id);
   var article = articles[req.params.id]; // {title: 'Bernie! Bernie!', body: '#feelthebern'}
   article.id = req.params.id; // {id:0, title: 'Bernie! Bernie!', body: '#feelthebern'}
   res.render("articles/edit", {article: article});
@@ -52,7 +52,7 @@ app.get("/articles/:id/edit", function(req, res) {
 
 app.put("/articles/:id", function(req, res) {
   console.log("putting");
-  article[req.params.id] = req.body;
+  articles[req.params.id] = req.body;
 
   res.send(req.body);
 });
@@ -61,6 +61,7 @@ app.put("/articles/:id", function(req, res) {
 app.delete("/articles/:id", function(req, res) {
   var articles_before_delete = articles;
   articles_before_delete[req.params.id] = undefined;
+
   articles = articles_before_delete;
 
   res.send({message: 'success'});

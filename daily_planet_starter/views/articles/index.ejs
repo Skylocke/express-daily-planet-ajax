@@ -5,11 +5,13 @@
 <a href="/articles/new" class="btn btn-primary">New Article</a>
 
 <% articles.forEach(function(article, idx) { %>
-  <div class="well">
-    <a class="article-link" href="/articles/<%= idx %>"><h2><%= article.title %></h2></a>
-    <button class="delete-action btn btn-danger">Delete <i-glyphicon class="edit-action glyphicon glyphicon-trash" /></button>
-    <button class="btn btn-default" onclick="window.location.href='/articles/<%= idx %>/edit'">Edit <i-glyphicon class="glyphicon glyphicon-pencil"></i></button>
-  </div>
+  <% if (idx !== undefined) { %>
+    <div class="well">
+      <a class="article-link" href="/articles/<%= idx %>"><h2><%= article.title %></h2></a>
+      <button class="delete-action btn btn-danger">Delete <i-glyphicon class="edit-action glyphicon glyphicon-trash" /></button>
+      <button class="btn btn-default" onclick="window.location.href='/articles/<%= idx %>/edit'">Edit <i-glyphicon class="glyphicon glyphicon-pencil"></i></button>
+    </div>
+  <% } %>
 <% }); %>
 
 <% include ../partials/footer.ejs %>

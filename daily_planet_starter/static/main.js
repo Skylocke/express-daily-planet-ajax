@@ -1,6 +1,8 @@
+console.log("JS good to go, sir!");
+
 $(".put-form").on("submit", function(event) {
   event.preventDefault();
-  var form_element = $(event.target);
+  var form_element = $(this);
   var url = form_element.attr("action");
   var form_data = form_element.serialize();
 
